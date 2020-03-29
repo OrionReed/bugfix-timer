@@ -8,7 +8,6 @@ class Debug < Timer
       {key: 'd' , method_name: :start, description: 'start a debug period'},
       {key: 'e' , method_name: :end, description: 'end a debug period'},
       {key: '#' , method_name: :comment, description: 'add a comment during a debug period'},
-      {key: '@ ' , method_name: :tag, description: 'add a tag to a debug period'}
     ]
     super
     @debugging = false
@@ -36,19 +35,10 @@ class Debug < Timer
 
   def comment
     if @debugging
-      c = input_str "Add Comment # "
-      append("comment", c)
+      com = input_str "Add Comment # "
+      append("comment", com)
     else
       puts "cannot add comments while not debugging"
-    end  
-  end
-  
-  def tag
-    if @debugging
-      tag = input_str "Add Tag @ "
-      append("tag", tag)
-    else
-      puts "cannot add tags while not debugging"
     end  
   end
 end 
